@@ -10,13 +10,12 @@
 #include "cdk.h"
 
 
-#define MATRIX_WIDTH 3
+#define MATRIX_WIDTH 5
 #define MATRIX_HEIGHT 3
 #define BOX_WIDTH 15
-#define MATRIX_NAME_STRING "Test Matrix"
+#define MATRIX_NAME_STRING "Matrix Program 6"
 
 using namespace std;
-
 
 int main()
 {
@@ -25,8 +24,8 @@ int main()
   CDKSCREEN	*cdkscreen;
   CDKMATRIX     *myMatrix;           // CDK Screen Matrix
 
-  const char 		*rowTitles[MATRIX_HEIGHT+1] = {"R0", "R1", "R2", "R3"};
-  const char 		*columnTitles[MATRIX_WIDTH+1] = {"C0", "C1", "C2", "C3"};
+  const char 		*rowTitles[MATRIX_HEIGHT+1] = {"0", "a", "b", "c"};
+  const char 		*columnTitles[MATRIX_WIDTH+1] = {"0", "a", "b", "c", "d", "e"};
   int		boxWidths[MATRIX_WIDTH+1] = {BOX_WIDTH, BOX_WIDTH, BOX_WIDTH, BOX_WIDTH};
   int		boxTypes[MATRIX_WIDTH+1] = {vMIXED, vMIXED, vMIXED, vMIXED};
 
@@ -57,15 +56,23 @@ int main()
   /* Display the Matrix */
   drawCDKMatrix(myMatrix, true);
 
-  /*
-   * Dipslay a message
-   */
-  setCDKMatrixCell(myMatrix, 2, 2, "Test Message");
+  //Set whats in the matrix
+  setCDKMatrixCell(myMatrix, 1, 1, "Magic: 0xFEEDFACE");
+  setCDKMatrixCell(myMatrix, 1, 2, "Versions: 16");
+  setCDKMatrixCell(myMatrix, 1, 3, "NumRecords: 4");
+  setCDKMatrixCell(myMatrix, 2, 1, "strlen: 10 ");
+  setCDKMatrixCell(myMatrix, 2, 2, "Seed Money");
+  setCDKMatrixCell(myMatrix, 3, 1, "strlen: 10");
+  setCDKMatrixCell(myMatrix, 3, 2, "Leadership");
+  setCDKMatrixCell(myMatrix, 4, 1, "strlen: 10");
+  setCDKMatrixCell(myMatrix, 4, 2, "Entrepreneurship");
+  setCDKMatrixCell(myMatrix, 5, 1, "strlen: 6");
+  setCDKMatrixCell(myMatrix, 5, 2, "Skillz");
+
   drawCDKMatrix(myMatrix, true);    /* required  */
 
   /* so we can see results */
   sleep (10);
-
 
   // Cleanup screen
   endCDK();
